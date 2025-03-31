@@ -75,6 +75,7 @@ delta_cr0 = delta_cr * (1 + ((gamma-1)/2) * Ma_cr^2)^(gamma/(gamma-1));
 TR = 1.07;                                  % Throttle ratio
 alpha_cr = delta_cr0 * (1 - (0.49 * sqrt(Ma_cr)));
 beta_cr = M_cr / MTOW;
+beta_cr_end = M_cr_end / MTOW;
 
 % Cruise parameters % 
 T_cr = theta_cr * T_std;                    % Static temp @ approx 13.5 km on standard day (K)
@@ -90,7 +91,7 @@ D_cr = CD_cr * q_cr * S;                    % Total drag force at flight speed
 
 % Double check %
 Thrust_Load2 = (beta_cr / alpha_cr) * (k * (beta_cr / q_cr) * ((MTOW*g)/S) + ((q_cr * C_D0) / (beta_cr * ((MTOW * g)/S))));
-Thrust_Out2 = Thrust_Load2 * MTOW * g; % It's the same!
+Thrust_Out2 = Thrust_Load2 * MTOW * g;      % It's the same!
 
 % Thrusts %
 Thrust_SL = Thrust_Loading * MTOW * g;           % Sea-level thrust (N)

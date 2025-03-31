@@ -4,8 +4,8 @@ clc;
 clear;
 close;
 
-exportMode = true;
-graph = 6;
+exportMode = false;
+graph = 1;
 
 
 % 1 - pi_fC vs SFC for B
@@ -165,7 +165,7 @@ elseif graph == 3
     h = colorbar;
     set(h, 'TickLabelInterpreter', 'latex');
     ylabel(h, '$B$', 'Interpreter', 'latex');
-    xlabel('$\pi_{fC}$', 'Interpreter', 'latex');
+    xlabel('$\pi_{cH}$', 'Interpreter', 'latex');
     ylabel('$SFC$ (kgkN$^{-1}$s$^{-1}$)', 'Interpreter', 'latex');
     set(gca, "TickLabelInterpreter", 'latex');
     ylim([0.01, 0.027]);
@@ -269,7 +269,7 @@ elseif graph == 5
     h = colorbar;
     set(h, 'TickLabelInterpreter', 'latex');
     ylabel(h, '$B$', 'Interpreter', 'latex');
-    xlabel('$\pi_{fI}$', 'Interpreter', 'latex');
+    xlabel('$\pi_{CI}$', 'Interpreter', 'latex');
     ylabel('$SFC$ (kgkN$^{-1}$s$^{-1}$)', 'Interpreter', 'latex');
     set(gca, "TickLabelInterpreter", 'latex');
     ylim([0.01, 0.027]);

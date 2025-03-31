@@ -155,13 +155,13 @@ T_oa = T_a * (1 + ((gamma-1)/2) * Ma_cr^2);                         % Ambient st
 P_oa = P_a * (1 + ((gamma-1)/2) * Ma_cr^2)^(gamma/(gamma-1));       % Ambient stagnation pressure (kN/m^2)
 
 %% Turbine Properties 
-B = 11;                                     % Fixed bypass ratio (for now)
+B = 10.48;                                     % Fixed bypass ratio (for now)
 
 % Stuff to Vary % 
-T_o4 = 1900;                                % Turbine entry temperature (K)
+T_o4 = 2090;                                % Turbine entry temperature (K)
 pi_cH = 10;                                  % HPC pressure ratio
-pi_cI = 3;                                  % IPC pressure ratio
-pi_fC = 1.5;                               % Fan core pressure ratio
+pi_cI = 2.5;                                  % IPC pressure ratio
+pi_fC = 2.27;                               % Fan core pressure ratio
 
 pi_o = pi_fC * pi_cI * pi_cH;               % Overall pressure ratio
 
@@ -239,12 +239,12 @@ P_o45 = P_o4 * (1 - (1 - (T_o45 / T_o4)) / (eta_HPT))^(gamma_g / (gamma_g - 1));
 
 % Intermediate Pressure Turbine (Entry @ Station 45) % 
 T_o47 = T_o45 - (C_P * (T_o25 - T_o23)) / (eta_mech * (1 + f_a) * C_Pg);
-eta_IPT = (1 - (T_o47/T_o45)) / (1 - (T_o47/T_o45))^(1/e_tI);
+eta_IPT = (1 - (T_o47/T_o45)) / ((1 -( T_o47/T_o45))^(1/e_tI));
 P_o47 = P_o45 * (1 - (1 - (T_o47 / T_o45)) / (eta_IPT))^(gamma_g / (gamma_g - 1));
 
 % Low Pressure Turbine (Entry @ Station 47) - ALSO DRIVES BYPASS FAN %
 T_o5 = T_o47 - ((C_P * (T_o23 - T_o2)) + (B * C_P * (T_o13 - T_o2))) / (eta_mech * (1 + f_a) * C_Pg);
-eta_LPT = (1 - (T_o5/T_o47)) / (1 - (T_o5/T_o47))^(1/e_tL);
+eta_LPT = (1 - (T_o5/T_o47)) / ((1 - (T_o5/T_o47))^(1/e_tL));
 P_o5 = P_o47 * (1 - (1 - (T_o5 / T_o47)) / (eta_LPT))^(gamma_g / (gamma_g - 1));
 
 % Critical presure & TEMP - NOTE THAT EFFICIENCIES ARE INCLUDED %
